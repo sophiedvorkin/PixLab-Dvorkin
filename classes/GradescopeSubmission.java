@@ -9,7 +9,7 @@ public class GradescopeSubmission {
         IntArrayWorker worker = new IntArrayWorker();
         int[][] nums = {{1, 1, 1} ,{2,2,2}};
         worker.setMatrix(nums);
-//        worker.getCount();
+//        worker.getCount(0);
 //        worker.getLargest();
 //        worker.getColTotal(0);
 //        IntArrayWorkerTester.testGetCount();
@@ -67,7 +67,7 @@ public class GradescopeSubmission {
 //        pixA9.edgeDetection(...) // intentionally vague about parameters, because each implementation is unique.
     }
 
-    public void main(String[] args) {
+    public static void main(String[] args) {
         GradescopeSubmission.partOne();
         GradescopeSubmission.partTwo();
         GradescopeSubmission.partThree();
