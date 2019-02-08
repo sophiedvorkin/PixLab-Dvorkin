@@ -97,6 +97,17 @@ public class Picture extends SimplePicture
       }
     }
   }
+
+  public void keepOnlyBlue() {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels) {
+      for (Pixel pixelObj : rowArray) {
+        pixelObj.setBlue(256);
+        pixelObj.setGreen(0);
+        pixelObj.setRed(0);
+      }
+    }
+  }
   
   /** Method that mirrors the picture around a 
     * vertical mirror in the center of the picture
@@ -213,6 +224,17 @@ public class Picture extends SimplePicture
           leftPixel.setColor(Color.BLACK);
         else
           leftPixel.setColor(Color.WHITE);
+      }
+    }
+  }
+
+  public void negate() {
+    Pixel[][] pixels = this.getPixels2D();
+    for (Pixel[] rowArray : pixels) {
+      for (Pixel pixelObj : rowArray) {
+        pixelObj.setBlue(-255);
+        pixelObj.setRed(-255);
+        pixelObj.setGreen(-255);
       }
     }
   }
