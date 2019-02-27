@@ -138,6 +138,7 @@ public class Picture extends SimplePicture {
 
     // loop through the rows
     for (int row = 27; row < 97; row++) {
+      count++;
       // loop from 13 to just before the mirror point
       for (int col = 13; col < mirrorPoint; col++) {
 
@@ -145,6 +146,7 @@ public class Picture extends SimplePicture {
         rightPixel = pixels[row]
                 [mirrorPoint - col + mirrorPoint];
         rightPixel.setColor(leftPixel.getColor());
+        System.out.println(count);
       }
     }
   }
@@ -195,6 +197,30 @@ public class Picture extends SimplePicture {
     this.copy(flower2, 500, 0);
     this.mirrorVertical();
     this.write("collage.jpg");
+  }
+
+  public void mirrorArms(){
+    int mirrorPoint = 193;
+ Pixel topPixel = null;
+Pixel bottomPixel = null;
+  Pixel[][] pixels = this.getPixels2D();
+
+//left arm
+    for (int row = 158; row < mirrorPoint; row++) {
+      for (int col = 103; col < 170; col++) {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[mirrorPoint - row + mirrorPoint][col];
+        bottomPixel.setColor(topPixel.setColor());
+      }
+    }
+      for (int row = 158; row < mirrorPoint; row++){
+        for (int col = 303; col < 240; col++){
+          topPixel = pixels[row][col];
+          bottomPixel = pixels[mirrorPoint - row + mirrorPoint][col];
+          bottomPixel.setColor(topPixel.setColor());
+        }
+      }
+
   }
 
 
@@ -258,7 +284,35 @@ public class Picture extends SimplePicture {
       }
     }
   }
-  
+
+
+  public void mirrorHorizontal() {
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int height = pixels.length;
+    for (int row = 0; row < height; row++) {
+      for (int col = 0; col < pixels[0].length; col++) {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[height - 1 - row][col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    }
+  }
+
+  public void mirrorHorizontalTopToBot(){
+    Pixel[][] pixels = this.getPixels2D();
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    int height = pixels.length;
+    for (int row = 0; row < height; row++) {
+      for (int col = 0; col < pixels[0].length; col++) {
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[height - row - 1][col];
+        bottomPixel.setColor(topPixel.getColor());
+      }
+    }
+  }
   
   /* Main method for testing - each class in Java can have a main 
    * method 
